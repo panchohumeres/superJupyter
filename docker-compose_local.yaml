@@ -1,0 +1,66 @@
+version: '3'
+services:
+
+  jupyter:
+    build:
+      context: ./jupyter
+    ports:
+      - ${JUPYTER_PORT}:8888 #default 8888
+    environment:
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_USER=$POSTGRES_USER
+      - PASSWORD=$JUPYTER_PSSWD
+      - JUPYTER_ALLOW_ORIGIN=$JUPYTER_ALLOW_ORIGIN
+    command: /bin/sh -c "/home/jovyan/.jupyter/jupyter-docker-entrypoint.sh"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ${HOST_DATA_PATH}:/data
+      - ./jupyter:/home/jovyan/.jupyter/
+      - ./backup_utils:/home/jovyan/work/backup_kibana
+      - ./ETL:/home/jovyan/work/ETL
+      - ./CRONTAB:/home/jovyan/work/CRONTAB
+      - ./modules:/home/jovyan/work/modules
+      - ./args:/home/jovyan/work/args
+
+
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - ${HOST_DATA_PATH}/redis:/data
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_USER: $POSTGRES_USER
+    volumes:
+      - ${HOST_DATA_PATH}/postgres:/var/lib/postgresql/data
+  superset:
+    image: amancevice/superset
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_FIRST_NAME: ${ADMIN_FIRST_NAME}
+      ADMIN_LAST_NAME: ${ADMIN_LAST_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PWD: ${ADMIN_PWD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    ports:
+      - ${SUPERSET_PORT}:8088
+    volumes:
+      - ./superset/superset_config.py:/etc/superset/superset_config.py
+      - ./superset/create_admin.sh:/etc/superset/create_admin.sh
+
+volumes:
+  postgres:
+  redis:
