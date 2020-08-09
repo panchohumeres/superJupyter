@@ -10,8 +10,8 @@ echo "creating certbot dir"
 mkdir ${CERTBOT_PATH}
 echo "changing ownership of certbot dir (for docker execution)"
 sudo chmod -R g+rwx ${CERTBOT_PATH}
-sudo chgrp -R $UID ${CERTBOT_PATH}
-sudo chown -R $UID ${CERTBOT_PATH}
+sudo chgrp -R ${UID} ${CERTBOT_PATH}
+sudo chown -R ${UID} ${CERTBOT_PATH}
 
 
 #CREATE CERTIFICATES FOR INTERNAL ELASTICSEARCH-KIBANA COMMUNICATION (TSL LAYER)
@@ -28,5 +28,5 @@ mkdir ${CERTBOT_PATH}/superset
 echo "changing ownership of superset dirs (for docker execution)"
 
 sudo chmod -R g+rwx ${HOST_DATA_PATH}
-sudo chgrp -R $UID ${HOST_DATA_PATH}
-sudo chown -R $UID ${HOST_DATA_PATH}
+sudo chgrp -R ${UID} ${HOST_DATA_PATH}
+sudo chown -R ${UID} ${HOST_DATA_PATH}
