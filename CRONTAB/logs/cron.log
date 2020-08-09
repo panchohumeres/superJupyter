@@ -1,0 +1,4 @@
+time="2020-08-08T22:40:48Z" level=info msg="read crontab: /home/jovyan/work/CRONTAB/crontab.sh"
+time="2020-08-08T23:08:05Z" level=info msg="received terminated, shutting down"
+time="2020-08-08T23:08:05Z" level=info msg="waiting for jobs to finish"
+time="2020-08-08T23:08:05Z" level=info msg=exiting
