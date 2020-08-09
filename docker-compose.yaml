@@ -60,7 +60,13 @@ services:
     volumes:
       - ./superset/superset_config.py:/etc/superset/superset_config.py
       - ./superset/create_admin.sh:/etc/superset/create_admin.sh
-
+  
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes: ['${HOST_DATA_PATH}/certbot/conf:/etc/letsencrypt','${HOST_DATA_PATH}/certbot/www:/var/www/certbot']
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  
   nginx:
     build:
       context: ./nginx
