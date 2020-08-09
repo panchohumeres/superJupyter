@@ -5,7 +5,7 @@ set -eu
 #IP LOCALHOST
 export LOCALHOST=$(ip route | awk '/^default via /{print $3}')
 
-envsubst '${LOCALHOST} ${KIBANA_GUEST_AUTH} ${KIBANA_GUEST_PORT} ${DOMAIN_KIBANA} ${DOMAIN_ELASTIC} ${DOMAIN_JUPYTER} ${SERVER_NAME_KIBANA} ${SERVER_NAME_ELASTIC} ${SERVER_NAME_JUPYTER} ${KIBANA_PORT} ${ELASTIC_PORT} ${JUPYTER_PORT}' < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf
+envsubst '${LOCALHOST} ${DOMAIN_SUPERSET} ${DOMAIN_JUPYTER} ${SERVER_NAME_JUPYTER} ${SERVER_NAME_SUPERSET} ${JUPYTER_PORT} ${SUPERSET_PORT}' < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf
 #echo "$@"
 
 exec "$@"
