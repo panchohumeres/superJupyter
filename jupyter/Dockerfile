@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 
-RUN apt-get update
+RUN apt-get update -y apt-transport-https
 RUN apt-get -qq -y install curl
 RUN apt-get install cron -yqq
 RUN apt-get install --assume-yes postfix
