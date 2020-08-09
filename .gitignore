@@ -1,0 +1,13 @@
+backup/
+nginx-conf/passwords
+nginx/conf/nginx.conf
+data/**
+.env
+nginx-config/nginx.conf
+scratch.md
+.env.bak
+test_bash.sh
+test_bash_2.sh
+nginx-config/test
+ebak.env
+CRONTAB/logs/**
