@@ -11,3 +11,4 @@ test_bash_2.sh
 nginx-config/test
 ebak.env
 CRONTAB/logs/**
+passwords.txt
