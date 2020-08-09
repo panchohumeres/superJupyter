@@ -2,10 +2,10 @@ FROM jupyter/base-notebook
 
 USER root
 
-RUN apt-get update -y apt-transport-https
+RUN apt-get update
 RUN apt-get -qq -y install curl
 RUN apt-get install cron -yqq
-RUN apt-get install --assume-yes postfix
+RUN apt-get install --assume-yes postfix -y apt-transport-https
 
 
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.9/supercronic-linux-amd64 \
