@@ -72,17 +72,12 @@ services:
       context: ./nginx
     environment:
       - LISTEN_PORT=80
-      - KIBANA_GUEST_AUTH=$KIBANA_GUEST_AUTH
-      - KIBANA_GUEST_PORT=${KIBANA_GUEST_PORT}
-      - DOMAIN_KIBANA=$DOMAIN_KIBANA
-      - DOMAIN_ELASTIC=$DOMAIN_ELASTIC
       - DOMAIN_JUPYTER=$DOMAIN_JUPYTER
       - JUPYTER_PORT=${JUPYTER_PORT}
-      - KIBANA_PORT=${KIBANA_PORT}
-      - ELASTIC_PORT=${ELASTIC_PORT}
-      - SERVER_NAME_KIBANA=$SERVER_NAME_KIBANA
-      - SERVER_NAME_ELASTIC=$SERVER_NAME_ELASTIC
       - SERVER_NAME_JUPYTER=$SERVER_NAME_JUPYTER
+      - DOMAIN_SUPERSET=$DOMAIN_SUPERSET
+      - SUPERSET_PORT=${SUPERSET_PORT}
+      - SERVER_NAME_SUPERSET=$SERVER_NAME_SUPERSET
     volumes: ['${PWD}/nginx/conf:/etc/nginx/conf.d','${PWD}/nginx/sites-enabled:/etc/nginx/sites-enabled',
     '${HOST_DATA_PATH}/certbot/conf:/etc/letsencrypt','${HOST_DATA_PATH}/certbot/www:/var/www/certbot',
     ]
