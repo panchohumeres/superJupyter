@@ -10,3 +10,5 @@ export FLASK_APP=superset
     --lastname $ADMIN_LAST_NAME \
     --email $ADMIN_EMAIL \
     --password $ADMIN_PWD\
+
+superset init
