@@ -1,14 +1,3 @@
-#### Based on:
-
-amancevice docker-superset project:
-    * https://hub.docker.com/r/amancevice/superset/
-    * https://github.com/amancevice/docker-superset/tree/main/examples/postgres
-    * https://github.com/amancevice/docker-superset
-
-tylerFowler docker superset (set user example):
-    * https://github.com/tylerFowler/docker-superset/blob/master/superset-init.sh
-
-
 # SuperJupyter  <img src="logo.png" alt="alt text" width="100px" height="100px">
 ## Business Intelligence Stack with Airbnb Apache Superset and Jupyter Notebooks
 ![enter image description here](arq.png)
@@ -36,6 +25,12 @@ Business Intelligence stack, based on **Apache Superset-PostGres** for **data wa
  3. Register 2 domains, for the Jupyter and Superset endpoints,all pointing to your **server/VM IP**.
  4. Change accordingly the environment variables on the `.env` file.
  5. `./certbot.sh`--->Create the SSL certificates and keystores for enabling **https** on the Kibana and Jupyter endpoints, and the Elasticsearch REST API.
+ 6. `docker-compose up`--->Start the stack
+ 7. Set up admin user.`docker-compose exec bash`, then:
+    * `export FLASK_APP=superset`
+    * `superset fab create-admin`---> Create `admin` user and password as you wish.
+    * `superset load_examples`----> Load sample data.
+    * `superset init`
 
 ## Startup
  6. `docker-compose up`--->Start the stack
