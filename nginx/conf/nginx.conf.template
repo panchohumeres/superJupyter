@@ -54,10 +54,6 @@ server {
       try_files $uri /analytics/$uri /analytics/$uri?$query_string @rules;
     }
 
-    location @rules {
-      # adapt "http://localhost" with your url
-      return 308 http://${LOCALHOST}:${SUPERSET_PORT}/analytics$uri$is_args$query_string;
-    }
 
 
 }
