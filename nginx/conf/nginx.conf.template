@@ -42,20 +42,6 @@ server {
             proxy_pass http://${SERVER_NAME_SUPERSET};
         }
 
-    location /analytics {
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Script-Name /analytics;
-        proxy_pass http://${SERVER_NAME_SUPERSET};
-        proxy_redirect off;
-    }
-
-    location ~ ^/(static|superset|sqllab|savedqueryview|druid|tablemodelview|databaseasync|dashboardmodelview|slicemodelview|dashboardasync|druiddatasourcemodelview|api|csstemplateasyncmodelview|chart|savedqueryviewapi|r|datasource|sliceaddview) {
-      try_files $uri /analytics/$uri /analytics/$uri?$query_string @rules;
-    }
-
-
-
 }
 
 
