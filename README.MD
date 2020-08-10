@@ -28,17 +28,14 @@ Business Intelligence stack, based on **Apache Superset-PostGres** for **data wa
  6. `docker-compose up`--->Start the stack
  7. Set up admin user.`docker-compose exec bash`, then:
     * `export FLASK_APP=superset`
-    * `superset fab create-admin`---> Create `admin` user and password as you wish.
+    * `superset fab create-admin`---> Create `admin` user (literally with that name) and password as you wish.
     * `superset load_examples`----> Load sample data.
     * `superset init`
 
 ## Startup
- 6. `docker-compose up`--->Start the stack
- 7. `docker-compose up docker-compose_local.yaml`---->Start the stack in local mode (without nginx nor certbot, for testing in local environment).
- 8. `docker-compose up --build`--->Start the stack recreating the services after changes in environment variables.
-
-### Backup Utilities
-
+ 1. `docker-compose up`--->Start the stack
+ 2. `docker-compose up docker-compose_local.yaml`---->Start the stack in local mode (without nginx nor certbot, for testing in local environment).
+ 3. `docker-compose up --build`--->Start the stack recreating the services after changes in environment variables.
 
 ## File Structure
 
