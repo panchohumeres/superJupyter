@@ -56,7 +56,7 @@ server {
 
     location @rules {
       # adapt "http://localhost" with your url
-      return 308 http://${SERVER_NAME_SUPERSET}/analytics$uri$is_args$query_string;
+      return 308 http://${LOCALHOST}:${SUPERSET_PORT}/analytics$uri$is_args$query_string;
     }
 
 
