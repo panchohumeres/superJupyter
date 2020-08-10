@@ -9,7 +9,8 @@ tylerFowler docker superset (set user example):
     * https://github.com/tylerFowler/docker-superset/blob/master/superset-init.sh
 
 
-# SuperJupyter ![enter image description here](logo.png)
+# SuperJupyter 
+![enter image description here](logo.png)
 ## Business Intelligence Stack with Airbnb Apache Superset and Jupyter Notebooks
 ![enter image description here](arq.png)
 Business Intelligence stack, based on **Apache Superset-PostGres** for **data warehousing** and **visualization**, and **Jupyter Notebooks** for development of automated **ETL** (Extract, Transform, Load) routines.
