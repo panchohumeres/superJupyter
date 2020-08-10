@@ -14,14 +14,14 @@ services:
       - JUPYTER_ALLOW_ORIGIN=$JUPYTER_ALLOW_ORIGIN
     command: /bin/sh -c "/home/jovyan/.jupyter/jupyter-docker-entrypoint.sh"
     volumes:
-      - ./notebooks:/home/jovyan/work
+      - ${PWD}:/home/jovyan/work
       - ${HOST_DATA_PATH}:/data
-      - ./jupyter:/home/jovyan/.jupyter/
-      - ./backup_utils:/home/jovyan/work/backup_kibana
-      - ./ETL:/home/jovyan/work/ETL
-      - ./CRONTAB:/home/jovyan/work/CRONTAB
-      - ./modules:/home/jovyan/work/modules
-      - ./args:/home/jovyan/work/args
+      - ${PWD}/jupyter:/home/jovyan/.jupyter/
+      - ${PWD}/backup_utils:/home/jovyan/work/backup_kibana
+      - ${PWD}/ETL:/home/jovyan/work/ETL
+      - ${PWD}/CRONTAB:/home/jovyan/work/CRONTAB
+      - ${PWD}/modules:/home/jovyan/work/modules
+      - ${PWD}/args:/home/jovyan/work/args
 
 
   redis:
