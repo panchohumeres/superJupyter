@@ -1,6 +1,6 @@
 import os
 
-SERVER_NAME = os.getenv('superset..com')
+SERVER_NAME = os.getenv('DOMAIN_SUPERSET')
 PUBLIC_ROLE_LIKE_GAMMA = True
 SESSION_COOKIE_SAMESITE = None # One of [None, 'Lax', 'Strict']
 SESSION_COOKIE_HTTPONLY = False
