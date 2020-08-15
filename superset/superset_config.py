@@ -9,6 +9,7 @@ POSTGRES_DB=os.getenv('POSTGRES_DB')
 POSTGRES_PASSWORD=os.getenv('POSTGRES_PASSWORD')
 POSTGRES_USER=os.getenv('POSTGRES_USER')
 POSTGRES_PORT=str(os.getenv('POSTGRES_PORT'))
+HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
 
 sql_alchemy_string='postgresql+psycopg2://'+POSTGRES_USER+':'+POSTGRES_PASSWORD+'@postgres:'+POSTGRES_PORT+'/'+POSTGRES_DB
 
