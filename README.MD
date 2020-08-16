@@ -88,7 +88,7 @@ Relevant File structure
 
 ## TROUBLESHOOTING:
 * **Jupyter Notebooks**:
-   - **"Permission denied: <filename>"** when creating files or folders on Jupyter Notebook endpoint:
+   - `Permission denied: <filename>` when creating files or folders on Jupyter Notebook endpoint:
       * **Cause**: Permission problems with mounted volumes. Jupyter container has by default a "jovyan" user, which Linux id is 1000. The container will only recognize as "writable" files and folders that in **the host** belong to the same Linux id==1000 (independent of the name of user and group).
       * **Diagnostic**:
          1. `docker-compose exec jupyter bash`.
@@ -97,12 +97,15 @@ Relevant File structure
          4. `exit` and `cd` into any of the mounted folders in the **host**, check who really owns the folders or files.
       * **Solution**, either:
          - **Copy permissions from a folder that works**
-            * sudo chmod -R --reference=<source_folder> <target_folder>
-            * sudo chown -R --reference=<source_folder> <target_folder>
+            * `sudo chmod -R --reference=<source_folder> <target_folder>`
+            * `sudo chown -R --reference=<source_folder> <target_folder>`
          - **Change the owner of the folders to UID==1000**
-            * sudo chmod -R g+rwx <target_folder>
-            * sudo chgrp -R 1000 <target_folder>
-            * sudo chown -R 1000 <target_folder>
+            * `sudo chmod -R g+rwx <target_folder>`
+            * `sudo chgrp -R 1000 <target_folder>`
+            * `sudo chown -R 1000 <target_folder>`
+      * **References**:
+         - https://github.com/jupyter/docker-stacks/issues/114
+         - https://discourse.jupyter.org/t/what-is-with-the-weird-jovyan-user/1673
 
 ** **Revisar documentación adicional en:**
 https://github.com/panchohumeres/panchoMan
