@@ -72,8 +72,6 @@ Relevant File structure
 ┃    Certbot setup script.
 ┣ 📜docker-compose.yml
 ┃    Stack docker-compose file.
-┣ 📜ebak.env
-┃    .env file for elastic dump utility.
 ┣ 📜.env
 ┃    .env file for EJK stack docker-compose file.
 ```
