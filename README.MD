@@ -47,15 +47,14 @@ Relevant File structure
 ┃ ┃Logs folder, where crontab status and output of Jupyter ETL scripts are stored.
 ┃ ┗ 📜crontab.sh
 ┃   Crontab script, which runs on Jupyter container at startup. Edit for configuration of ETL scheduling.
+┣ 📂args
+┃ Folder for python arguments (for being used by Jupyter Notebook container)
+┣ 📂superset
+┃ ┃ Superset config. files.
+┃ ┗ 📜superset_config.py
+┃   Superset config. file, which will be read by the container at startup.
 ┣ 📂ETL
 ┃  ETL scripts (jupyter notebooks)
-┣ 📂backup_utils
-┃ ┣ 📂elastic_dump
-┃ ┃  Elastic dump utility (node.js).
-┃ ┗ 📂kibana
-┃   Kibana backup utility (python3)
-┣ 📂certs
-┃  Docker-compose files for creating TSL certificates for internal communications between Elasticsearch-Kibana.
 ┣ 📂jupyter
 ┃   Jupyter configuration files, including Dockerfile.
 ┣ 📂modules
@@ -77,8 +76,6 @@ Relevant File structure
 ┃    .env file for elastic dump utility.
 ┣ 📜.env
 ┃    .env file for EJK stack docker-compose file.
-┗ 📜elastic_backup.sh
-    Wrapper for elastic dump utility.
 ```
 ## TROUBLESHOOTING:
 * **Jupyter Notebooks**:
