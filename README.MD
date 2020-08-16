@@ -80,12 +80,6 @@ Relevant File structure
 ┗ 📜elastic_backup.sh
     Wrapper for elastic dump utility.
 ```
-
-## TODO LIST:
-* agregar las siguientes librerías al dockerfile del contenedor de jupyter (comandos):
-    * conda install pymongo
-* agregar en docker-compose rutina para que kibana espere a contenedores de elasticsearch antes de iniciarse.
-
 ## TROUBLESHOOTING:
 * **Jupyter Notebooks**:
    - `Permission denied: <filename>` when creating files or folders on Jupyter Notebook endpoint:
@@ -107,5 +101,12 @@ Relevant File structure
          - https://github.com/jupyter/docker-stacks/issues/114
          - https://discourse.jupyter.org/t/what-is-with-the-weird-jovyan-user/1673
 
-** **Revisar documentación adicional en:**
-https://github.com/panchohumeres/panchoMan
+* **Superset**:
+   - `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"> <title>400 Bad Request</title> <h1>Bad Request</h1> <p>The CSRF session token is missing.</p>` appears on embedded Dashboards (as iframe):
+      * **Diagnostic:** On superset docker logs will appear as a `CSRF token missing` Flask error.
+      * **Solution:** This happens usually when testing in local environment and in Chrome browser. Just try with the website hosted in a web-host (even github-pages) and the embedded dashboard should display correctly.
+      * **References**: 
+         - https://nickjanetakis.com/blog/fix-missing-csrf-token-issues-with-flask
+         - https://github.com/apache/incubator-superset/issues/8382
+   - `Invalid login. Please try again` on superset login, despite user have been created correctly on environmente variables.
+      * **Solution**: Check that first you have created an `admin` user (step 7 of Setup), through superset container's console.
