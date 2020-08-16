@@ -80,3 +80,29 @@ Relevant File structure
 ┗ 📜elastic_backup.sh
     Wrapper for elastic dump utility.
 ```
+
+## TODO LIST:
+* agregar las siguientes librerías al dockerfile del contenedor de jupyter (comandos):
+    * conda install pymongo
+* agregar en docker-compose rutina para que kibana espere a contenedores de elasticsearch antes de iniciarse.
+
+## TROUBLESHOOTING:
+* **Jupyter Notebooks**:
+   - **"Permission denied: <filename>"** when creating files or folders on Jupyter Notebook endpoint:
+      * **Cause**: Permission problems with mounted volumes. Jupyter container has by default a "jovyan" user, which Linux id is 1000. The container will only recognize as "writable" files and folders that in **the host** belong to the same Linux id==1000 (independent of the name of user and group).
+      * **Diagnostic**:
+         1. `docker-compose exec jupyter bash`.
+         2. `id`------>This will list the jovyan user properties, including its Linux ID.
+         3. `cd` into any of the mounted folders, then `ls -all`, check the folders and files owners and groups, if they do not belong to UID==1000, then there will be trouble.
+         4. `exit` and `cd` into any of the mounted folders in the **host**, check who really owns the folders or files.
+      * **Solution**, either:
+         - **Copy permissions from a folder that works**
+            * sudo chmod -R --reference=<source_folder> <target_folder>
+            * sudo chown -R --reference=<source_folder> <target_folder>
+         - **Change the owner of the folders to UID==1000**
+            * sudo chmod -R g+rwx <target_folder>
+            * sudo chgrp -R 1000 <target_folder>
+            * sudo chown -R 1000 <target_folder>
+
+** **Revisar documentación adicional en:**
+https://github.com/panchohumeres/panchoMan
