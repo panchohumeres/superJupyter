@@ -36,10 +36,17 @@ Business Intelligence stack, based on **Apache Superset-PostGres** for **data wa
  1. `docker-compose up`--->Start the stack
  2. `docker-compose up docker-compose_local.yaml`---->Start the stack in local mode (without nginx nor certbot, for testing in local environment).
  3. `docker-compose up --build`--->Start the stack recreating the services after changes in environment variables.
+## ETL DOCS
+See [specific documentation](/ETLdocs/readme.md)
 
 ## File Structure
+## File Structure
+### Root de Jupyter Notebook
 
-Relevant File structure
+Root of **Jupyter Notebook** endpoint (served by **Jupyter** container):
+
+![](jupyter_root.png)
+#### Relevant File structure
 ```
 📦EJK
 ┣ 📂CRONTAB
