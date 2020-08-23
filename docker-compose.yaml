@@ -9,17 +9,24 @@ services:
     environment:
       - NB_UID=1002 #change to host user id in case it's not 1000
       - POSTGRES_DB=$POSTGRES_DB
+      - DB_NAME=$DB_NAME
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_PORT=${POSTGRES_PORT}
       - POSTGRES_USER=$POSTGRES_USER
       - PASSWORD=$JUPYTER_PSSWD
       - JUPYTER_ALLOW_ORIGIN=$JUPYTER_ALLOW_ORIGIN
+      - S3_ACCESS_KEY=$S3_ACCESS_KEY
+      - S3_SECRET_KEY=$S3_SECRET_KEY
+      - S3_BUCKET=$S3_BUCKET
     command: /bin/sh -c "/home/jovyan/.jupyter/jupyter-docker-entrypoint.sh"
     volumes:
       - ${PWD}/notebooks:/home/jovyan/work
       - ${HOST_DATA_PATH}:/data
+      - ${HOST_DATA_PATH}/ETLcache:/home/jovyan/work/ETLcache
       - ${PWD}/jupyter:/home/jovyan/.jupyter/
-      - ${PWD}/backup_utils:/home/jovyan/work/backup_kibana
+      - ${PWD}/backup_utils:/home/jovyan/work/backup
       - ${PWD}/ETL:/home/jovyan/work/ETL
+      - ${PWD}/ETLdocs:/home/jovyan/work/ETLdocs
       - ${PWD}/CRONTAB:/home/jovyan/work/CRONTAB
       - ${PWD}/modules:/home/jovyan/work/modules
       - ${PWD}/args:/home/jovyan/work/args

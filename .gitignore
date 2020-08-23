@@ -13,3 +13,4 @@ ebak.env
 CRONTAB/logs/**
 passwords.txt
 replace.txt
+ETL/.ipynb_checkpoints/*

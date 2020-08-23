@@ -26,6 +26,9 @@ mkdir ${CERTBOT_PATH}/postgres
 echo "creating superset dir"
 mkdir ${CERTBOT_PATH}/superset
 echo "changing ownership of superset dirs (for docker execution)"
+echo "creating ETLcache dir"
+mkdir ${CERTBOT_PATH}/ETLcache
+echo "changing ownership of ETLcache dirs (for docker execution)"
 
 sudo chmod -R g+rwx ${HOST_DATA_PATH}
 sudo chgrp -R ${UID} ${HOST_DATA_PATH}
