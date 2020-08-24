@@ -5,6 +5,7 @@ USER root
 RUN apt-get update
 RUN apt-get -qq -y install curl
 RUN apt-get install cron -yqq
+RUN apt-get install -y rar unrar
 #RUN apt-get install --assume-yes postfix
 
 
@@ -32,7 +33,8 @@ RUN conda install --quiet --yes -c \
     sqlalchemy \
     scikit-learn \
     psycopg2 \
-    boto3
+    boto3 \
+    patool
 
 
 RUN pip install -U elasticsearch
