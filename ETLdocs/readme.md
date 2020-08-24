@@ -27,4 +27,5 @@ Automated ETL work through CRONTAB file **inside** Jupyter's container. Steps fo
 
 ### ETL Cache
 
-Aditionally, it is recommended to store intermediate ETL steps (such as .xlsx or .csv files) [in the corresponding mounted volume](../ETL/ETLdocs).
+* Aditionally, it is recommended to store intermediate ETL steps (such as .xlsx or .csv files) [in the corresponding mounted volume](../ETL/ETLdocs).
+* [ETL Cache cleaning script:](../ETL/cleanETL.ipynb) ETL for mantaining a constant size of ETLcache (default 200 MB), keeping the last N files which acummulated size is below the threshold. Edit this ETL for changing the treshold, and activate it in the [CRONTAB sheduler](../CRONTAB/crontab.sh).
