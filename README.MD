@@ -26,11 +26,13 @@ Business Intelligence stack, based on **Apache Superset-PostGres** for **data wa
  4. Change accordingly the environment variables on the `.env` file.
  5. `./certbot.sh`--->Create the SSL certificates and keystores for enabling **https** on the Kibana and Jupyter endpoints, and the Elasticsearch REST API.
  6. `docker-compose up`--->Start the stack
- 7. Set up admin user.`docker-compose exec bash`, then:
+ 7. Set up admin user.`docker-compose exec superset bash`, then:
     * `export FLASK_APP=superset`
-    * `superset fab create-admin`---> Create `admin` user (literally with that name) and password as you wish.
+    * `superset fab create-admin`---> Create an `admin` user and its password.
+    * `superset db upgrade`
+8. Optional:
     * `superset load_examples`----> Load sample data.
-    * `superset init`
+    * `superset init` ------>Not necessary (execute for restarting superset if desired)
 
 ## Startup
  1. `docker-compose up`--->Start the stack
@@ -110,3 +112,6 @@ Root of **Jupyter Notebook** endpoint (served by **Jupyter** container):
          - https://github.com/apache/incubator-superset/issues/8382
    - `Invalid login. Please try again` on superset login, despite user have been created correctly on environmente variables.
       * **Solution**: Check that first you have created an `admin` user (step 7 of Setup), through superset container's console.
+   - Errors like: `sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_attribute [SQL: SELECT user_attribute.welcome_dashboard_id AS user_attribute_welcome_dashboard_id FROM user_attribute WHERE user_attribute user_id = ?] [parameters: ('1',)]`.
+      * **Solution**: Update Database----> `superset db upgrade`.
+      * **References:** https://github.com/apache/incubator-superset/issues/7143
