@@ -30,7 +30,7 @@ Business Intelligence stack, based on **Apache Superset-PostGres** for **data wa
     * `export FLASK_APP=superset`
     * `superset fab create-admin`---> Create an `admin` user and its password.
     * `superset db upgrade`
-8. Optional:
+ 8. Optional:
     * `superset load_examples`----> Load sample data.
     * `superset init` ------>Not necessary (execute for restarting superset if desired)
 
